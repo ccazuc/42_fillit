@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 05:37:07 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/08 12:19:01 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/09 06:50:55 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int				ft_atoi(char const *str);
 char			*ft_strjoin_free12(char *s1, char *s2);
 char			*ft_strsub_start(char *str, int start);
 char			*ft_strjoin_free1(char *s1, char *s2);
+void			ft_exit(char *str, int exit_value);
 
 typedef struct	s_list
 {
