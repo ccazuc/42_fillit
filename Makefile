@@ -6,32 +6,35 @@
 #    By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 16:13:32 by ccazuc            #+#    #+#              #
-#    Updated: 2017/11/08 16:27:38 by ccazuc           ###   ########.fr        #
+#    Updated: 2017/11/09 09:01:14 by ccazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C=gcc
+CC=gcc
 
 CFLAGS=-Wall -Werror -Wextra
 
 EXEC=fillit
 
-SRC=main.c parser.c check_piece.c libft.a -Iincludes
+SRC=main.c parser.c check_piece.c
 
 OBJ=$(SRC:.c=.o)
 
-all: $(EXEC)
+all: $(EXEC) libft
 
 $(EXEC): $(OBJ)
-		$(CC) -o $@ $^
+		@$(CC) -o $@ $^
 
 %.o: %.c
 		@$(CC) -o $@ -c $< $(CFLAGS)
 
-fclean:
+fclean: clean
 	rm -rf $(EXEC)
+
+libft:
+	libft.a -Iincludes
 
 clean:
 		rm -rf *.o
 
-re: clean fclean all
+re: fclean all
