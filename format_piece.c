@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 09:51:05 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/09 11:18:02 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/09 11:23:40 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,40 @@ void	calculate_format(t_piece *piece)
 	}	
 }
 
-void	format_piece(t_piece *piece)
+void	fill_piece(t_piece *piece, char **result)
 {
 	int		i;
 	int		j;
+	int		res_i;
+	int		res_j;
+
+	i = -1;
+	res_i = -1;
+	while (piece->datas[++i])
+	{
+		//printf("check_line: %d\n", i);
+		if (!has_bloc_on_line(piece, i))
+			continue ;
+		//printf("line: %d has block\n", i);
+		j = -1;
+		++res_i;
+		res_j = -1;
+		while (piece->datas[i][++j])
+		{
+			//printf("check_column\n");
+			if (!has_bloc_on_column(piece, j))
+				continue ;
+			++res_j;
+			//printf("res_i: %d, res_j: %d, i: %d, j: %d\n", res_i, res_j, i, j);
+			result[res_i][res_j] = piece->datas[i][j];
+		}
+	}
+
+}
+
+void	format_piece(t_piece *piece)
+{
+	int		i;
 	char	**result;
 	int		res_i;
 	int		res_j;
@@ -93,25 +123,7 @@ void	format_piece(t_piece *piece)
 	printf("height: %d, width: %d\n", piece->height, piece->width);
 	print_piece(piece);
 	i = -1;
-	while (piece->datas[++i])
-	{
-		//printf("check_line: %d\n", i);
-		if (!has_bloc_on_line(piece, i))
-			continue ;
-		//printf("line: %d has block\n", i);
-		j = -1;
-		++res_i;
-		res_j = -1;
-		while (piece->datas[i][++j])
-		{
-			//printf("check_column\n");
-			if (!has_bloc_on_column(piece, j))
-				continue ;
-			++res_j;
-			//printf("res_i: %d, res_j: %d, i: %d, j: %d\n", res_i, res_j, i, j);
-			result[res_i][res_j] = piece->datas[i][j];
-		}
-	}
+	fill_piece(piece, result);
 	free(piece->datas);
 	piece->datas = result;
 	printf("After:\n");
