@@ -6,14 +6,14 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 15:42:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/09 10:07:08 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 10:24:28 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "libft.h"
+# include "./includes/libft.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -37,6 +37,8 @@ typedef struct			s_env
 	char				**grid;
 	int					pieces_placed;
 	int					nb_pieces;
+	int					total_width;
+	int					total_height;
 }						t_env;
 
 void					check_bloc_position(t_piece *piece);

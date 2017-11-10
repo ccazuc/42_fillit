@@ -6,11 +6,13 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:24:49 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/09 14:30:32 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 10:23:49 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		can_place(t_env *env, t_piece piece, int x, int y)
+#include "fillit.h"
+
+int		can_place(t_env *env, t_piece *piece, int x, int y)
 {
 	int		i;
 	int		j;

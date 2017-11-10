@@ -1,40 +1,48 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/08 16:13:32 by ccazuc            #+#    #+#              #
-#    Updated: 2017/11/09 09:01:14 by ccazuc           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = fillit
 
-CC=gcc
+CFLAGS = -Wall -Wextra -Werror
 
-CFLAGS=-Wall -Werror -Wextra
+CC = gcc
 
-EXEC=fillit
+INCLUDES_PATH = includes/
 
-SRC=main.c parser.c check_piece.c
+SRCS_NAME = main.c \
+			can_place.c \
+			check_piece.c \
+			format_piece.c \
+			parser.c \
 
-OBJ=$(SRC:.c=.o)
+SRCS = $(SRCS_NAME)
 
-all: $(EXEC) libft
+OBJS_PATH = obj/
 
-$(EXEC): $(OBJ)
-		@$(CC) -o $@ $^
+OBJS_NAME = $(SRCS_NAME:.c=.o)
 
-%.o: %.c
-		@$(CC) -o $@ -c $< $(CFLAGS)
+OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
-fclean: clean
-	rm -rf $(EXEC)
+LIBRARY = -L libft -lft
 
-libft:
-	libft.a -Iincludes
+all: odir $(NAME)
+
+$(NAME): $(OBJS)
+	@echo " - Making $(NAME)"
+	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) -I$(INCLUDES_PATH)
+
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
+	@echo " - Compiling $<"
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_PATH)
+
+odir:
+	@mkdir -p $(OBJS_PATH)
 
 clean:
-		rm -rf *.o
+	@echo " - Clearing objects files"
+	@rm -f $(OBJS)
+
+fclean: clean
+	@echo " - Clearing executable file"
+	@rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: clean fclean re odir
