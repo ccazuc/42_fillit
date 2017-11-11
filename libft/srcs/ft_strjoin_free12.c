@@ -26,7 +26,7 @@ char	*ft_strjoin_free12(char *s1, char *s2)
 	j = -1;
 	while (s2 && s2[++j])
 		result[i + j] = s2[j];
-	result[i + j] = '\0';	
+	result[i + j] = '\0';
 	free(s1);
 	free(s2);
 	return (result);
