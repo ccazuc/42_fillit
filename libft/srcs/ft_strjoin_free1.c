@@ -19,7 +19,7 @@ char	*ft_strjoin_free1(char *s1, char *s2)
 	int		i;
 	int		j;
 	int		size;
-	
+
 	i = 0;
 	while (s1 && s1[i])
 		++i;
