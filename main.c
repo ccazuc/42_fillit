@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 15:18:34 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 17:55:46 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/14 16:59:46 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,17 @@ int		main(int argc, char **argv)
 	t_env	*env;
 
 	if (!(env = malloc(sizeof(*env))))
-		ft_exit("Error, out of memory.", -1);
+		ft_exit("error", -1);
 	env->pieces_list = NULL;
-	parse(argc, argv, env);
-	printf("Parse ended without any problem.\n");
+	if (!parse(argc, argv, env))
+	{
+		ft_putstr("error\n");
+		return (-1);
+	}
+	if (!solve(env))
+	{
+		ft_putstr("error\n");
+		return (-1);
+	}
+	return (0);
 }

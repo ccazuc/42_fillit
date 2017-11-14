@@ -11,6 +11,8 @@ SRCS_NAME = main.c \
 			check_piece.c \
 			format_piece.c \
 			parser.c \
+			solve.c \
+			solve_func.c \
 
 SRCS = $(SRCS_NAME)
 

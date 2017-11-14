@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 15:42:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 10:24:28 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/14 17:11:23 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,25 @@ typedef struct			s_env
 	char				**grid;
 	int					pieces_placed;
 	int					nb_pieces;
+	int					curr_grid_size;
 	int					total_width;
 	int					total_height;
+	int					initial_grid_size;
 }						t_env;
 
-void					check_bloc_position(t_piece *piece);
-void					check_piece_char(t_piece *piece);
-void					check_piece_format(t_piece *piece);
-void					check_all_pieces(t_env *env);
-void					add_piece(char *buffer, t_env *env);
-void					parse(int argc, char **argv, t_env *env);
-void					load_datas(int fd, t_env *env);
-void					format_piece(t_piece *piece);
+int						check_bloc_position(t_piece *piece);
+int						check_piece_char(t_piece *piece);
+int						check_piece_format(t_piece *piece);
+int						check_all_pieces(t_env *env);
+int						add_piece(char *buffer, t_env *env);
+int						parse(int argc, char **argv, t_env *env);
+int						load_datas(int fd, t_env *env);
+int						format_piece(t_piece *piece);
+int						solve(t_env *env);
+int						can_place(t_env *env, t_piece *piece, int x, int y);
+void					print_piece(t_piece *piece);
+void					place_piece(t_env *env, t_piece *piece, int x, int y);
+int						increment_value(t_env *env, int *x, int *y);
+void					decrement_value(t_env *env, int *x, int *y);
 
 #endif
