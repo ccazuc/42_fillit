@@ -6,7 +6,7 @@
 #    By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 11:15:45 by ccazuc            #+#    #+#              #
-#    Updated: 2017/11/10 08:58:22 by ccazuc           ###   ########.fr        #
+#    Updated: 2017/11/23 06:52:42 by ccazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Ofast -g
+CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES_PATH = includes/
 

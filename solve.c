@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 09:40:55 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/14 17:10:24 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/23 06:59:09 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	print_result(t_env *env)
 	{
 		j = -1;
 		while (++j < env->curr_grid_size - 1)
-			printf("%c", env->grid[i][j]);
-		printf("\n");
+			ft_putchar(env->grid[i][j]);
+		ft_putchar('\n');
 	}
 }
 
@@ -65,14 +65,18 @@ int		recurse(t_env *env, t_fillist *list)
 {
 	int		i;
 	int		j;
+	int		max_i;
+	int		max_j;
 
 	if (!list)
 		return (1);
 	i = -1;
-	while (++i < env->curr_grid_size)
+	max_i = env->curr_grid_size - list->piece->height;
+	max_j = env->curr_grid_size - list->piece->width;
+	while (++i < max_i)
 	{
 		j = -1;
-		while (++j < env->curr_grid_size)
+		while (++j < max_j)
 		{
 			if (can_place(env, list->piece, j, i))
 			{
