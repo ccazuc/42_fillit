@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 17:07:38 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/14 17:09:10 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/23 07:11:29 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,24 @@ void	decrement_value(t_env *env, int *x, int *y)
 	}
 	else
 		*x = *x - 1;
+}
+
+void	free_grid(t_env *env)
+{
+	int		i;
+
+	i = -1;
+	while (++i < env->curr_grid_size)
+		free(env->grid[i]);
+	free(env->grid);
+}
+
+void	free_piece_datas(t_piece *piece)
+{
+	int		i;
+
+	i = -1;
+	while (piece->datas[++i])
+		free(piece->datas[i]);
+	free(piece->datas);
 }

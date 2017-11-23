@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 15:42:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/14 17:11:23 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/23 07:11:45 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ void					print_piece(t_piece *piece);
 void					place_piece(t_env *env, t_piece *piece, int x, int y);
 int						increment_value(t_env *env, int *x, int *y);
 void					decrement_value(t_env *env, int *x, int *y);
+void					free_grid(t_env *env);
+void					free_piece_datas(t_piece *piece);
 
 #endif

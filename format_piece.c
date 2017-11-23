@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 09:51:05 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/14 17:06:59 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/23 07:12:00 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		format_piece(t_piece *piece)
 		result[i][piece->width] = '\0';
 	}
 	fill_piece(piece, result);
-	free(piece->datas);
+	free_piece_datas(piece);
 	piece->datas = result;
 	return (1);
 }
