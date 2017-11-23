@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 14:15:18 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/14 16:56:03 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/23 06:39:40 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,21 @@ int		load_datas(int fd, t_env *env)
 	int		nb_read;
 	char	buffer[22];
 	int		last_read;
+	int		total_read;
 
 	nb_read = 0;
+	total_read = 0;
 	while ((data_read = read(fd, buffer, 21)) > 0)
 	{
 		buffer[data_read] = '\0';
 		last_read = data_read;
+		total_read += data_read;
 		++nb_read;
 		if (nb_read > 26)
 			return (0);
 		add_piece(buffer, env);
 	}
-	if (last_read == 21 || nb_read == 0)
+	if (last_read == 21 || nb_read == 0 || total_read < 20)
 		return (0);
 	env->nb_pieces = nb_read;
 	return (1);
