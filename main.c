@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 15:18:34 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/23 06:47:49 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/23 06:50:07 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(int argc, char **argv)
 
 	if (!(env = malloc(sizeof(*env))))
 	{
-		ft_putrstr("error"\n);
+		ft_putstr("error\n");
 		return (-1);
 	}
 	env->pieces_list = NULL;
