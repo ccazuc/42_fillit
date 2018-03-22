@@ -6,7 +6,7 @@
 #    By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 11:15:45 by ccazuc            #+#    #+#              #
-#    Updated: 2017/11/23 06:52:42 by ccazuc           ###   ########.fr        #
+#    Updated: 2017/11/15 07:36:49 by ccazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,6 @@ NAME = libft.a
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
-
-INCLUDES_PATH = includes/
-
-SRCS_PATH = srcs/
 
 SRCS_NAME = ft_atoi.c \
 			ft_bzero.c \
@@ -87,8 +83,17 @@ SRCS_NAME = ft_atoi.c \
 			ft_strjoin_free1.c \
 			ft_todegrees.c \
 			ft_toradians.c \
+			ft_math_fabs.c \
+			ft_math_dabs.c \
+			ft_math_max.c \
+			ft_math_abs.c \
+			ft_isblank.c \
+			ft_isspace.c \
+			ft_isxdigit.c \
+			ft_putstr_array.c \
+			ft_str_isalpha.c \
 
-SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
+SRCS = $(SRCS_NAME)
 
 OBJS_PATH = obj/
 
@@ -105,7 +110,7 @@ $(NAME): $(OBJS)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@echo " - Compiling $<"
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_PATH)
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 odir:
 	@mkdir -p $(OBJS_PATH)

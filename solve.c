@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 09:40:55 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/23 07:12:19 by ccazuc           ###   ########.fr       */
+/*   Updated: 2018/03/22 09:28:17 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,13 @@ int		recurse(t_env *env, t_fillist *list)
 {
 	int		i;
 	int		j;
-	int		max_i;
 	int		max_j;
 
 	if (!list)
 		return (1);
 	i = -1;
-	max_i = env->curr_grid_size - list->piece->height;
 	max_j = env->curr_grid_size - list->piece->width;
-	while (++i < max_i)
+	while (++i < env->curr_grid_size - list->piece->height)
 	{
 		j = -1;
 		while (++j < max_j)

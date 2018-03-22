@@ -27,6 +27,7 @@ LIBRARY = -L libft -lft
 all: odir $(NAME)
 
 $(NAME): $(OBJS)
+	@Make -C libft
 	@echo " - Making $(NAME)"
 	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) -I$(INCLUDES_PATH)
 
@@ -38,10 +39,12 @@ odir:
 	@mkdir -p $(OBJS_PATH)
 
 clean:
+	@Make clean -C libft
 	@echo " - Clearing objects files"
 	@rm -f $(OBJS)
 
 fclean: clean
+	@Make fclean -C libft
 	@echo " - Clearing executable file"
 	@rm -f $(NAME)
 
